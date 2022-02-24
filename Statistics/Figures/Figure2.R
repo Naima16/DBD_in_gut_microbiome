@@ -1,5 +1,5 @@
 
-polymorphism.df=read.table('/Users/naima/projet_HMP_gut_nandita_sept20/hmp1_2_matrices/HMP1-2_polymorphism_rates_alpha_divs.csv',sep=',',header=T)
+polymorphism.df=read.table('HMP1-2_polymorphism_rates_alpha_divs.csv',sep=',',header=T)
 dim(polymorphism.df)
 head(polymorphism.df)
 colnames(polymorphism.df)
@@ -12,7 +12,7 @@ polymorphism.df$subject_id=as.factor(polymorphism.df$subject_id)
 polymorphism.df[grepl('c',polymorphism.df$sample_id),'sample_id']
 
 
-sample_data_raref=read.table('/Users/naima/projet_HMP_gut_nandita_sept20/strain_finder_withzero2/16mai_rarefied_v2/sample_covariates_rarefied_20m.txt',sep='\t',header=T)
+sample_data_raref=read.table('sample_covariates_rarefied_20m.txt',sep='\t',header=T)
 colnames(sample_data_raref)
 # [1] "sample_id"         "subject_id"        "shannon_diversity" "species_richness"  "total_reads_MIDAS"
 # [6] "total_reads_orig"
@@ -332,14 +332,7 @@ dev.off()
 
 ###strain number
 
-## modifé / au script /Users/naima/projet_HMP_gut_nandita_sept20/5juillet_final_version/29juin_taxo_shanon/strain_taxo_shannon.R
-## j'ai enlevé les samples avec - 20 millions (32) ds le plots de richness
-
-
-## zeros are replaced by strain number = 1 
-## long format with 3 columns :  species sample strain number
-
-gene_strain_df=read.table('/Users/naima/projet_HMP_gut_nandita_sept20/strain_finder_withzero2/gene_counts_strain_num_per_sample_species.csv',sep=',',header=T)
+gene_strain_df=read.table('gene_counts_strain_num_per_sample_species.csv',sep=',',header=T)
 dim(gene_strain_df)
 head(gene_strain_df)
 
@@ -365,7 +358,7 @@ length(unique(gene_strain_df$species_name)) ##190
 #########
 
 ###sample data from strain not raref
-sample_data=read.table('/Users/naima/projet_HMP_gut_nandita_sept20/hmp1_2_matrices/sample_covariates.txt',sep='\t',header=T)
+sample_data=read.table('sample_covariates.txt',sep='\t',header=T)
 colnames(sample_data)
 # "sample_id"                     "subject_id"               
 # [3] "shannon_diversity"         "species_richness"         
@@ -383,7 +376,7 @@ sample_data[!sample_data$sample_id %in% gene_strain_df$sample_id,'sample_id']
 
 ##raref data
 
-sample_data_raref=read.table('/Users/naima/projet_HMP_gut_nandita_sept20/strain_finder_withzero2/16mai_rarefied_v2/sample_covariates_rarefied_20m.txt',sep='\t',header=T)
+sample_data_raref=read.table('sample_covariates_rarefied_20m.txt',sep='\t',header=T)
 colnames(sample_data_raref)
 range(sample_data_raref$total_reads_orig) #70628 20000000
 small.samples=sample_data_raref[sample_data_raref$total_reads_orig<20000000,'sample_id']
