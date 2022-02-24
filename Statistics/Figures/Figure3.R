@@ -82,7 +82,6 @@ stat.shan1=ddply(genes.3.los, .(species), summarise,
 ##NA are species with only 0
 
 sig.pval.pi=stat.shan1[stat.shan1$pval<=0.05,'species']
-
 #[1] Bacteroides_uniformis_57318 Bacteroides_vulgatus_57955  Dialister_invisus_61905  
 
 stat.shan1[stat.shan1$pval<0.05 & stat.shan1$est<0 ,'species']
@@ -100,10 +99,7 @@ library(RColorBrewer)
 nb.cols <- 33
 myColors <- colorRampPalette(brewer.pal(4, "Spectral"))(nb.cols)
 
-#myColors <- brewer.pal(25,"polychrome")
 names(myColors) <- unique(genes.3.los$species)
-
-#Bacteroides_uniformis_57318 Bacteroides_vulgatus_57955  Dialister_invisus_61905
 
 myColors[names(myColors)=='Bacteroides_uniformis_57318']='cyan'
 myColors[names(myColors)=='Bacteroides_vulgatus_57955']='#FF0000'
@@ -154,19 +150,6 @@ stat.rich1=ddply(genes.3.los, .(species), summarise,
 ##NA are species with only 0
 
 sig.rich=stat.rich1[stat.rich1$pval<=0.05,'species']
-
-# [1] Alistipes_putredinis_61533   Bacteroides_stercoris_56735  Bacteroides_uniformis_57318  Bacteroides_vulgatus_57955  
-# [5] Parabacteroides_merdae_56972
-
-# myColors[names(myColors)=='Bacteroides_uniformis_57318']='cyan'
-# myColors[names(myColors)=='Bacteroides_vulgatus_57955']='#FF0000'
-# myColors[names(myColors)=='Dialister_invisus_61905']='black'
-# 
-# 
-# 
-# myColors[names(myColors)=='Alistipes_putredinis_61533']='magenta'
-# myColors[names(myColors)=='Bacteroides_stercoris_56735']='blue'
-# myColors[names(myColors)=='Parabacteroides_merdae_56972']='green'
 
 stat.rich1[stat.rich1$pval<0.05 & stat.rich1$est<0 ,'species']
 #0
@@ -220,7 +203,7 @@ p1.1=p1+ theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
 sp.shan3.1=sp.shan3+ theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
 
 library(cowplot)
-pdf('fig2_cowplot.pdf',width=6.5,heigh=2.7) ##7,3
+pdf('fig3.pdf',width=6.5,heigh=2.7) ##7,3
 plot_grid(p1, sp.shan3,labels = c('A', 'B'),label_size=7,align='h',rel_widths=c(1,1.5))
 dev.off()
 
@@ -272,12 +255,8 @@ shan <- ggplot(mydata1,aes(x=alpha_div_tp1,y=log10(num_gene_losses+1)))+
        #    label.y.npc = "top") 
 shan
 
-pdf('gene_loss_top10_v1.pdf',width=4 ,height = 4,pointsize = 6)
+pdf('gene_loss_top10.pdf',width=4 ,height = 4,pointsize = 6)
 #### 
 grid.arrange(shan,rich,ncol=2)
 dev.off()
 
-# pdf('gene_loss_top10_v0.pdf',width=4 ,height = 4,pointsize = 6)
-# #### 
-# grid.arrange(shan,rich,ncol=2)
-# dev.off()
