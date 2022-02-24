@@ -1,5 +1,5 @@
 
-pi_poyet=read.table('/Users/naima/projet_HMP_gut_nandita_sept20/5juillet_final_version/december_2021_Longitudinal_data/Poyet/Poyet_delta_polymorphism.csv',sep=',',header=T)
+pi_poyet=read.table('Poyet_delta_polymorphism.csv',sep=',',header=T)
 colnames(pi_poyet)
 # [1] "sample_tp1"         "sample_tp2"         "subject"            "tp1"                "tp2"               
 # [6] "species"            "delta_polymorphism" "polymorphism_tp1"   "polymorphism_tp2"   "alpha_div_tp1"     
@@ -15,7 +15,7 @@ length(unique(pi_am$sample_tp1))   ##204
 range(pi_am$tp1) #1:230
 
 ###am data de moi
-am_access_date=read.table('/Users/naima/Projet2_zhao/S01_am_analyses/unrarefied_am_24janv/11janv/am_accession_date.csv',sep=",",header=T)
+am_access_date=read.table('am_accession_date.csv',sep=",",header=T)
 dim(am_access_date)  ##206-6
 head(am_access_date)
 
@@ -98,9 +98,7 @@ summary(am.pi.1)
 
 
 ###genes
-gene_poyet=read.table('/Users/naima/projet_HMP_gut_nandita_sept20/5juillet_final_version/december_2021_Longitudinal_data/Poyet/Poyet_gene_changes_full.csv',sep=',',header=T)
-#gene_poyet=read.table('/Users/naima/projet_HMP_gut_nandita_sept20/5juillet_final_version/longitudinal_data_12nov/poyrt/Poyet_gene_changes_full.csv',sep=',',header=T)
-dim(gene_poyet)
+gene_poyet=read.table('Poyet_gene_changes_full.csv',sep=',',header=T)
 
 gene_am=gene_poyet[gene_poyet$subject=='am' & gene_poyet$species=='Bacteroides_vulgatus_57955',]
 
