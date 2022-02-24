@@ -676,10 +676,7 @@ sp.shan1.1=sp.shan1+ theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
 sp.rich1.1=sp.rich1+ theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
 
 library(cowplot)
-pdf('fig1_cowplot.pdf',width=7,heigh=7) ##7,3
-plot_grid(sp.shan2.1, sp.rich2.1,sp.shan1.1, sp.rich1.1,labels = c('A', 'B','C','D'),label_size=7)
-dev.off()
 
-pdf('fig1_cowplot_v1.pdf',width=6.5,heigh=6) ##7,3
+pdf('figure2.pdf',width=6.5,heigh=6) 
 plot_grid(sp.shan2.1, sp.rich2.1,sp.shan1.1, sp.rich1.1,labels = c('A', 'B','C','D'),label_size=7)
 dev.off()
