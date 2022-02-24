@@ -1,5 +1,5 @@
 
-genes=read.table('/Users/naima/projet_HMP_gut_nandita_sept20/5juillet_final_version/december_2021_Longitudinal_data/HMP/HMP_gene_changes_full.csv',sep=',',header=T)
+genes=read.table('HMP_gene_changes_full.csv',sep=',',header=T)
 dim(genes)  #1339   14
 colnames(genes)
 
