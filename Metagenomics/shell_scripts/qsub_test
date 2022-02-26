@@ -1,0 +1,20 @@
+#!/bin/bash
+#$ -N postprocess_HMP1-2_more_species
+#$ -e /u/project/ngarud/daisyche/dbd/logs
+#$ -e /u/project/ngarud/daisyche/dbd/logs
+#$ -l h_data=16G
+#$ -l time=23:00:00
+#$ -t 50-50
+#$ -m e
+
+. /u/local/Modules/default/init/modules.sh
+module load python/2.7
+
+ppdir=/u/project/ngarud/daisyche/dbd/scripts/postprocess
+
+readarray all_species < /u/project/ngarud/daisyche/dbd/data/pickles/species_list.txt
+all_species=(null ${all_species[@]}) # zero to one start index
+species=${all_species[$SGE_TASK_ID]}
+
+echo Postprocessing species $species
+
