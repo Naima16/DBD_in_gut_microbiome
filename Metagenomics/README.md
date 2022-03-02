@@ -6,3 +6,5 @@ To set up for use:
 - Obtain MIDAS output for HMP1-2 dataset (should be a single directory containing merged genes, snps, species output)
 - Run postprocessing scripts (postprocess/calculate_...) if necessary
 - Make a symbolic link to utils under postprocess
+
+To process Poyet MIDAS output, swap out metadata for poyet/metadata and utils/sample_utils.py for poyet/sample_utils.py. All postprocessing steps are analogous.
