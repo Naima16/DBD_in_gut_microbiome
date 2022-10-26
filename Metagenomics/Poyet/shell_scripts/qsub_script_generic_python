@@ -1,0 +1,18 @@
+#!/bin/bash
+#$ -N TempChangesDiversityTable
+#$ -e /u/project/ngarud/daisyche/dbd/logs/poyet_logs
+#$ -o /u/project/ngarud/daisyche/dbd/logs/poyet_logs
+#$ -l h_data=16G
+#$ -l time=03:00:00
+#$ -m a
+
+. /u/local/Modules/default/init/modules.sh
+module load python/2.7
+
+# Run the plot script!
+python ~/dbd/scripts_poyet/pickle_diversity_vs_temporal_changes.py
+
+# python ~/mother_infant/scripts/diversity_vs_snp_changes.py --sweep-type partial
+
+# python ~/mother_infant/scripts/diversity_vs_snp_changes.py --sweep-type full
+

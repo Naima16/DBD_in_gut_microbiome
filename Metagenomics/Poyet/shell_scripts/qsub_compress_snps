@@ -1,0 +1,21 @@
+#!/bin/bash
+#$ -N compress_snps_Poyet
+#$ -e /u/project/ngarud/daisyche/dbd/logs/poyet_logs
+#$ -o /u/project/ngarud/daisyche/dbd/logs/poyet_logs
+#$ -l h_data=16G
+#$ -l time=20:00:00
+#$ -t 1-58
+#$ -m e
+
+snps_dir=/u/project/ngarud/Garud_lab/metagenomic_fastq_files/Poyet_temp/data/snps
+
+readarray species_snps < $snps_dir/species_snps.txt
+species_snps=(null ${species_snps[@]}) # zero to one start index
+species=${species_snps[$SGE_TASK_ID]}
+
+echo "Compressing snps for $species"
+bzip2 $snps_dir/$species/snps_ref_freq.txt
+bzip2 $snps_dir/$species/snps_alt_allele.txt
+bzip2 $snps_dir/$species/snps_depth.txt
+bzip2 $snps_dir/$species/snps_info.txt
+echo "Done :D"

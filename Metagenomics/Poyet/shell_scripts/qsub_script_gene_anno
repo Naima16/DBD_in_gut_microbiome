@@ -1,0 +1,22 @@
+#!/bin/bash
+#$ -N gene_changes_anno_old
+#$ -cwd
+#$ -e /u/project/ngarud/daisyche/dbd/logs/gene_changes_test
+#$ -o /u/project/ngarud/daisyche/dbd/logs/gene_changes_test
+#$ -l h_data=16G
+#$ -l time=14:00:00
+#$ -t 5-158
+#$ -m e
+
+. /u/local/Modules/default/init/modules.sh
+module load python/2.7
+
+sdir=/u/project/ngarud/daisyche/dbd/scripts
+
+readarray all_species < /u/project/ngarud/daisyche/dbd/data/pickles/species_list.txt
+all_species=(null ${all_species[@]}) # zero to one start index
+species=${all_species[$SGE_TASK_ID]}
+
+echo Postprocessing species $species
+
+python $sdir/gene_changes_annotation_old.py $species

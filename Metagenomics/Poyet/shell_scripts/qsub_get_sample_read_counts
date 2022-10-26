@@ -1,0 +1,29 @@
+#!/bin/bash
+#$ -N ReadCountsPoyet
+#$ -e /u/project/ngarud/daisyche/dbd/logs/read_counts
+#$ -o /u/project/ngarud/daisyche/dbd/logs/read_counts
+#$ -cwd
+#$ -l h_data=4G
+#$ -l time=03:00:00
+#$ -t 1-401
+
+metadata_dir=/u/project/ngarud/daisyche/dbd/scripts_poyet/metadata
+
+readarray accs < /u/project/ngarud/Garud_lab/metagenomic_fastq_files/Poyet_temp/Poyet_run_accessions_actual.txt
+accs=(null ${accs[@]}) # zero to one start index
+acc=${accs[$SGE_TASK_ID]}
+echo $acc
+
+fastq_dir=/u/scratch/d/daisyche/Poyet_fastq_files
+
+file_1=$fastq_dir/${acc}_1.fastq.gz
+file_2=$fastq_dir/${acc}_2.fastq.gz
+
+lines_1=$(zcat $file_1 |wc -l)
+reads_1=$(( $lines_1 / 4 ))
+lines_2=$(zcat $file_2 |wc -l)
+reads_2=$(( $lines_2 / 4 ))
+
+total_reads=$(( $reads_1 + $reads_2 ))
+
+echo -e "${acc}\t${total_reads}" >> $metadata_dir/Poyet_sample_read_counts.txt
