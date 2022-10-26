@@ -1,0 +1,40 @@
+#!/bin/bash
+#$ -e /u/home/r/rwolff/oligocolonization/output/strainFinder_err.txt
+#$ -o /u/home/r/rwolff/oligocolonization/output/strainFinder_out.txt
+#$ -cwd
+#$ -l h_data=30G
+#$ -l time=23:59:00
+#$ -m bea
+#$ -t 1:50
+
+. /u/local/Modules/default/init/modules.sh
+
+module load python/2.7
+
+input_file=$1
+output_base_dir=$2
+
+## host=$( basename $input_file )
+
+specs="$( ls $input_file )"
+echo $specs
+array=( $specs )
+species_pkl=${array[$SGE_TASK_ID]}
+species_name="${species_pkl//.pkl}"
+echo $species_name
+species_name=$( basename $species_name )
+output_species_dir="$output_base_dir"/"$species_name"
+echo "$input_file"/"$species_name".pkl
+mkdir -p $output_species_dir
+mkdir -p "${output_species_dir}"/output "${output_species_dir}"/logs "${output_species_dir}"/otu_tables
+## rm -r "$output_base_dir"/output "$output_base_dir"/logs "$output_base_dir"/otu_tables
+
+python StrainFinder.py --aln "$input_file"/"$species_name".pkl -N 1 --max_reps 10 --dtol 1 --ntol 2 --max_time 20000 --converge --em_out "$output_species_dir"/output/"$species_name"_1 --otu_out "${output_species_dir}"/otu_tables/otu_table_1.txt --log "${output_species_dir}"/logs/log_1.txt --n_keep 2 --force_update --merge_out --msg
+
+python StrainFinder.py --aln "$input_file"/"$species_name".pkl -N 2 --max_reps 10 --dtol 1 --ntol 2 --max_time 20000 --converge --em_out "$output_species_dir"/output/"$species_name"_2 --otu_out "${output_species_dir}"/otu_tables/otu_table_2.txt --log "${output_species_dir}"/logs/log_2.txt --n_keep 5 --force_update --merge_out --msg
+
+python StrainFinder.py --aln "$input_file"/"$species_name".pkl -N 3 --max_reps 10 --dtol 1 --ntol 2 --max_time 20000 --converge --em_out "$output_species_dir"/output/"$species_name"_3 --otu_out "${output_species_dir}"/otu_tables/otu_table_3.txt --log "${output_species_dir}"/logs/log_3.txt --n_keep 5 --force_update --merge_out --msg 
+
+python StrainFinder.py --aln "$input_file"/"$species_name".p -N 4 --max_reps 10 --dtol 1 --ntol 2 --max_time 20000 --converge --em_out "$output_species_dir"/output/"$species_name"_4 --otu_out "${output_species_dir}"/otu_tables/otu_table_4.txt --log "${output_species_dir}"/logs/log_4.txt --n_keep 5 --force_update --merge_out --msg
+
+echo $( basename $input_file ) >> qsub_sf_completed_file "$species_name"
