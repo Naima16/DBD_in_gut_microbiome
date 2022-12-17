@@ -1,6 +1,7 @@
 #### This script plot figure 2. 1: Scatter plot showing the relationship between polymorphism rate 
 #### and community diversity in the 9 most prevalent species in the raw data, 
 #### 2: Gam outputs
+#### Naima Madi dec 2022
 
 Garud.data=read.table('~/HMP1-2_polymorphism_rates_alpha_divs.csv',sep=',',header=T)
 dim(Garud.data)
