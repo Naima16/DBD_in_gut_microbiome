@@ -3,6 +3,11 @@
 #### 2: Gam outputs
 #### Naima Madi dec 2022
 
+Library(ggplot2)
+library(scales)
+library(itsadug)
+
+
 Garud.data=read.table('~/HMP1-2_polymorphism_rates_alpha_divs.csv',sep=',',header=T)
 dim(Garud.data)
 head(Garud.data)
@@ -40,8 +45,6 @@ c=as.data.frame(table(Garud.data.2$species_name))
 c.ord=as.data.frame(c[with(c,order(-Freq)),])
 
 mydata1=Garud.data.2[which(Garud.data.2$species_name %in% c.ord[1:9,'Var1']),]
-
-library(scales)
 
 Plot2 <- ggplot(mydata1,aes(Shannon_alpha_diversity,polymorphism_rate))+
   geom_point(color='gray41',size=0.07) + 
@@ -86,7 +89,7 @@ p0
 dev.off()
 
 ##gam plot
-library(itsadug)
+
 load('~/gam1.pi.fs.RData')
 load('~/gam.pi.rich.all.RData')
 load('~/gam.pi.rarefRich.cov.RData')
