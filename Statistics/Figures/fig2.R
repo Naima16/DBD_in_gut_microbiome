@@ -2,7 +2,7 @@
 #### and community diversity in the 9 most prevalent species in the raw data, 
 #### 2: Gam outputs
 
-Garud.data=read.table('/Users/naima/projet_HMP_gut_nandita_sept20/hmp1_2_matrices/HMP1-2_polymorphism_rates_alpha_divs.csv',sep=',',header=T)
+Garud.data=read.table('~/HMP1-2_polymorphism_rates_alpha_divs.csv',sep=',',header=T)
 dim(Garud.data)
 head(Garud.data)
 colnames(Garud.data)
@@ -15,7 +15,7 @@ Garud.data$subject_id=as.factor(Garud.data$subject_id)
 Garud.data[grepl('c',Garud.data$sample_id),'sample_id']
 
 
-sample_data_raref=read.table('/Users/naima/projet_HMP_gut_nandita_sept20/strain_finder_withzero2/16mai_rarefied_v2/sample_covariates_rarefied_20m.txt',sep='\t',header=T)
+sample_data_raref=read.table('~/sample_covariates_rarefied_20m.txt',sep='\t',header=T)
 colnames(sample_data_raref)
 #"sample_id"         "subject_id"        "shannon_diversity" "species_richness"  "total_reads_MIDAS" "total_reads_orig" "
 
@@ -86,9 +86,9 @@ dev.off()
 
 ##gam plot
 library(itsadug)
-load('/Users/naima/projet_HMP_gut_nandita_sept20/5juillet_final_version/pi_sept/gam1.pi.fs.RData')
-load('/Users/naima/projet_HMP_gut_nandita_sept20/5juillet_final_version/pi_sept/pi_richness_all/gam.pi.rich.all.RData')
-load('/Users/naima/projet_HMP_gut_nandita_sept20/5juillet_final_version/pi_sept/pi_richness_raref/add_cov/gam.pi.rarefRich.cov.RData')
+load('~/gam1.pi.fs.RData')
+load('~/gam.pi.rich.all.RData')
+load('~/gam.pi.rarefRich.cov.RData')
 
 pdf('gam_2.pdf',width=3.5 ,height = 2,pointsize = 7)
 par(mfrow=c(1,3))
