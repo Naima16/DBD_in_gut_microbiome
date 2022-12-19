@@ -1,17 +1,9 @@
 ##### GLMMs with strain count in a focal species as a function of diversity at high taxonomic levels
 ##### Naima Madi dec 2022
 
-library(cowplot)  ## for as.grob
-library(jtools)
+library(cowplot)  ## as.grob
+library(jtools)   ## effect_plot
 library(ggplot2)
-
-require(wesanderson)
-require(tidyverse)
-
-pa = wes_palettes %>% 
-  names()
-pal2 = 'navyblue' #"#150563"
-
 
 
 ## load glmm outputs : strain count ~ shannon at high taxonomic levels
