@@ -1,5 +1,5 @@
 ### figure suppl 1
-### Ploymorphism rate ~ diversity at different taxonomic levels (GAMs output)
+### Ploymorphism rate at synonymous sites ~ diversity at different taxonomic levels (GAMs output)
 ### Naima Madi dec 2022
 
 library(itsadug)
