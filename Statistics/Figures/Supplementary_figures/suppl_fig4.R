@@ -4,7 +4,7 @@ library(itsadug)
 
 
 ##delta pi~shannon
-load('/Users/naima/projet_HMP_gut_nandita_sept20/5juillet_final_version/Review_elife_mai_2022/poyet_juillet_final/pi/gam.pi2.RData')
+load('~/gam.pi2.RData')
 summary(gam.pi2)
 
 
