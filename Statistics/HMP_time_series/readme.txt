@@ -1,1 +1,2 @@
-
+Generalized mixed models to test the predictions of DBD over time, these models were fit with HMP samples with multiple time points from the same person 
+We looked at the relationship : 1) between within-species polymorphism change, defined as the difference between polymorphism rate at two time points, and community diversity at the earlier time point, 2) gene gain and loss between two time points and diversity at the earlier time point.
