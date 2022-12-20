@@ -1,1 +1,1 @@
-Statistics in R
+Statistics + visualisation in R
