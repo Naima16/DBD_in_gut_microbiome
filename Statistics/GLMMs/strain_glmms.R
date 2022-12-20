@@ -255,28 +255,28 @@ AICtab(p1.cov,nb1.cov,nb2.cov)
 check_overdispersion(p1.cov)  #Overdispersion detected.
 
 ## test random effects (truncated neg bin 2 model)
-nb2.cov=glmmTMB(strain_nb ~ species_richness +total_reads_orig  + (species_richness|species_id) + (1|sample_id) +(1|subject_id),
-                data=datsc,family = truncated_nbinom2(link = "log"),control=glmmTMBControl(optimizer=optim, optArgs=list(method="BFGS")))
+#nb2.cov=glmmTMB(strain_nb ~ species_richness +total_reads_orig  + (species_richness|species_id) + (1|sample_id) +(1|subject_id),
+ #               data=datsc,family = truncated_nbinom2(link = "log"),control=glmmTMBControl(optimizer=optim, optArgs=list(method="BFGS")))
 
-r1=glmmTMB(strain_nb ~ species_richness +total_reads_orig  + (species_richness|species_id) + (1|sample_id) ,
+r1_raref=glmmTMB(strain_nb ~ species_richness +total_reads_orig  + (species_richness|species_id) + (1|sample_id) ,
            data=datsc,family = truncated_nbinom2(link = "log"),control=glmmTMBControl(optimizer=optim, optArgs=list(method="BFGS")))
 
-r2=glmmTMB(strain_nb ~ species_richness +total_reads_orig  + (species_richness|species_id)  ,
+r2_raref=glmmTMB(strain_nb ~ species_richness +total_reads_orig  + (species_richness|species_id)  ,
            data=datsc,family = truncated_nbinom2(link = "log"),control=glmmTMBControl(optimizer=optim, optArgs=list(method="BFGS")))
 
-r3=glmmTMB(strain_nb ~ species_richness +total_reads_orig  + (1|species_id)  ,
+r3_raref=glmmTMB(strain_nb ~ species_richness +total_reads_orig  + (1|species_id)  ,
            data=datsc,family = truncated_nbinom2(link = "log"),control=glmmTMBControl(optimizer=optim, optArgs=list(method="BFGS")))
 
-r4=glmmTMB(strain_nb ~ species_richness +total_reads_orig    ,
+r4_raref=glmmTMB(strain_nb ~ species_richness +total_reads_orig    ,
            data=datsc,family = truncated_nbinom2(link = "log"),control=glmmTMBControl(optimizer=optim, optArgs=list(method="BFGS")))
 
-anova(nb2.cov,r1,r2,r3,r4)
+anova(nb2.cov,r1_raref,r2_raref,r3_raref,r4_raref)
 
 ## test fixed effects
-drop1(r3,test='Chisq')
+drop1(r3_raref,test='Chisq')
 
-sims_sp <- simulateResiduals(r3)
-png('r3_dharma.png')
+sims_sp <- simulateResiduals(r3_raref)
+png('r3_raref_dharma.png')
 plot(sims_sp,quantreg = T)
 dev.off()
 
@@ -284,10 +284,10 @@ null.r3=glmmTMB(strain_nb ~ 1  + (1|species_id)  ,
                 data=datsc,family = truncated_nbinom2(link = "log"),
                 control=glmmTMBControl(optimizer=optim, optArgs=list(method="BFGS")))
 
-anova(r3,null.r3)
+anova(r3_raref,null.r3)
 
-r2(r3)
-save(r3,file='r3.RData')
+r2(r3_raref)
+save(r3_raref,file='r3_raref.RData')
 
 
 
