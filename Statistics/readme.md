@@ -5,4 +5,4 @@
 * GLMMs : Code for the generalized linear mixed models with strain count in a focal species as a function of community diversity estimated with Shannon, species richness on the whole data and rarefied richness.
 * HMP_time_series : Code for the generalized mixed models with genetic change between two time points as a function of diversity at the earlier time point (HMP time series)
 * Poyet_time_series : Code for the generalized mixed models with genetic change between two time points as a function of diversity at the earlier time point (Poyet time series)
-* data_Tables : all data tables from metagenomic pipeline used to fit the models and to generate the Figure.
+* data_Tables : all data tables from metagenomic pipeline used to fit the models and to generate the Figures.
