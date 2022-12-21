@@ -4,6 +4,7 @@ Code for the metagenomic pipeline, statistics and figures in Madi et al. 2022.
 
 ### Content :
 
+* Code for metagenomics pipelines and post-Midas filters
 * Figures: Code to generate all the figures and supplementary figures.
 * GAMs : Code for generalized additive mixed models with polymorphism rate in a focal species as a function of community diversity estimated with Shannon, species richness on the whole data and rarefied richness.
 * GLMMs : Code for generalized linear mixed models with strain count in a focal species as a function of community diversity estimated with Shannon, species richness on the whole data and rarefied richness.
