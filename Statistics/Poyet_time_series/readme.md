@@ -1,3 +1,3 @@
-Generalized mixed models to test the relationship between within-species genetic change between two time points and community diversity at the earliest time point 
-The data used here have a higher temporal resolution compared to HMP time series where individuals were sampled only twice-three times, here we have longitudinal metagenomic data from four highly frequently sampled healthy stool donors (data from Poyet et al., 2019).
-We tested genetic change between two time points (estimated with Polymorphism change, gene gain and gene loss) with community diversity (estimated with Shannon diversity, species richness).
+* Generalized mixed models to test the relationship between within-species genetic change between two time points and community diversity at the earliest time point 
+* The data used here have a higher temporal resolution compared to HMP time series where individuals were sampled only twice-three times, here we have longitudinal metagenomic data from four highly frequently sampled healthy stool donors (data from Poyet et al., 2019).
+* We tested genetic change between two time points (estimated with Polymorphism change, gene gain and gene loss) with community diversity (estimated with Shannon diversity, species richness).
