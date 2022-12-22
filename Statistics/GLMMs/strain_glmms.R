@@ -303,11 +303,7 @@ df.strain$subject_id=as.factor(df.strain$subject_id)
 
 
 ## taxonomy from GTDNK pipeline
-taxo_1=read.table('~/part1/gtdbtk.bac120.summary.tsv',sep='\t',header=T)
-taxo_2=read.table('~/part2/gtdbtk.bac120.summary.tsv',sep='\t',header=T)
-
-taxo=rbind(taxo_1,taxo_2)
-
+taxo=read.table('~/part1/gtdbtk.bac120.summary.tsv',sep='\t',header=T)
 taxo.df=taxo[,c('user_genome','classification')]
 
 for (i in 1:dim(taxo.df)[1] ) {
