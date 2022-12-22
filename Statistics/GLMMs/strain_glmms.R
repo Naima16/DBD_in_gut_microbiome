@@ -329,7 +329,6 @@ df.all$sample_id=as.factor(df.all$sample_id)
 
 
 midas_abund=read.table('~/relative_abundance.txt',sep='\t',header=T,check.names = F)
-dim(midas_abund)  #5952  470
 
 rownames(midas_abund)=midas_abund$species_id
 midas_abund=midas_abund[,-1]
@@ -342,13 +341,11 @@ commun_data_n=data.matrix(as.data.frame(commun_data))  ##sample*species
 #remove species present in 0 sample
 commun_data_n.nonzero=commun_data_n[,-(which(colSums(commun_data_n)==0))]
 
-
 library(vegan)
 shannon_midas=diversity(commun_data_n.nonzero,index='shannon')  ## la même que quand j'enlève pas les 0
 shannon_midas=diversity(commun_data_n,index='shannon')
 #####
 shannon_midas=as.data.frame(shannon_midas)
-
 
 library(reshape2)
 midas_abund$species_id=rownames(midas_abund)
@@ -448,11 +445,7 @@ for (i in 1:length(sample_list)) {
   sample_tax_shannon[i,'Midas_sp_shannon']=sp_midas_div
 }
 
-
-
 df.all2=merge(df.all[,c('species_id','sample_id','subject_id','total_reads_orig','shannon_diversity','species_richness','strain_nb'),],sample_tax_shannon,by='sample_id')
-
-
 datsc2=df.all2
 
 pvar1='phyla_shannon'
@@ -465,7 +458,6 @@ pvar7='total_reads_orig'
 pvar8='shannon_diversity'
 pvar9='species_richness'
 
-
 datsc2[pvar1] <- lapply(df.all2[pvar1],scale)
 datsc2[pvar2] <- lapply(df.all2[pvar2],scale)
 datsc2[pvar3] <- lapply(df.all2[pvar3],scale)
@@ -476,9 +468,6 @@ datsc2[pvar7] <- lapply(df.all2[pvar7],scale)
 datsc2[pvar8] <- lapply(df.all2[pvar8],scale)
 datsc2[pvar9] <- lapply(df.all2[pvar9],scale)
 
-
-
-
 ##phyla
 poi.phyla=glmmTMB(strain_nb ~ phyla_shannon + total_reads_orig +(phyla_shannon|species_id) + (1|sample_id) + (1|subject_id) ,
                   data=datsc2,family = truncated_poisson(link='log'),control=glmmTMBControl(optimizer=optim, optArgs=list(method="BFGS")))
@@ -488,7 +477,6 @@ summary(poi.phyla)
 nbinom1.phyla=glmmTMB(strain_nb ~ phyla_shannon + total_reads_orig +  (phyla_shannon|species_id)+(1|sample_id) + (1|subject_id),
                       data=datsc2,family = truncated_nbinom1(link='log'),control=glmmTMBControl(optimizer=optim, optArgs=list(method="BFGS")))
 summary(nbinom1.phyla) 
-
 
 ##nbinom2
 nbinom2.phyla=glmmTMB(strain_nb ~ phyla_shannon + total_reads_orig +  (phyla_shannon|species_id)+(1|sample_id) + (1|subject_id),
