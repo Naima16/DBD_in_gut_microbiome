@@ -94,16 +94,10 @@ dev.off()
 ##### gams with polyorphism rate at synonymous sites as a function of Shannon diversity at higher taxonomic levels
 
 ## taxonomic annotation from GTDBK pipeline
-taxo_1=read.table('~/gtdbtk.bac120.summary.tsv',sep='\t',header=T)
-dim(taxo_1)  ##1068*20
-colnames(taxo_1)
+taxo=read.table('~/gtdbtk.bac120.summary.tsv',sep='\t',header=T)
+dim(taxo) 
+colnames(taxo)
 
-### gtdbk des especes de data 1
-taxo_2=read.table('~/gtdbtk.bac120.summary.tsv',sep='\t',header=T)
-dim(taxo_2)  ##190*20
-colnames(taxo_2)
-
-taxo=rbind(taxo_1,taxo_2)
 taxo.df=taxo[,c('user_genome','classification')]
 
 dim(taxo.df)  #1258    2
