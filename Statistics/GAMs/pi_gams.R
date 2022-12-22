@@ -100,8 +100,6 @@ colnames(taxo)
 
 taxo.df=taxo[,c('user_genome','classification')]
 
-dim(taxo.df)  #1258    2
-
 for (i in 1:dim(taxo.df)[1] ) {
   taxo.df[i,'genus']=unlist(strsplit(unlist(strsplit(as.character(taxo.df[i,]$classification),";"))[6],"__"))[2]
   taxo.df[i,'family']=unlist(strsplit(unlist(strsplit(as.character(taxo.df[i,]$classification),";"))[5],"__"))[2]
@@ -111,10 +109,6 @@ for (i in 1:dim(taxo.df)[1] ) {
   taxo.df[i,'GTDBK_species']=unlist(strsplit(unlist(strsplit(as.character(taxo.df[i,]$classification),";"))[7],"__"))[2]
   taxo.df[i,'species_name']=unlist(strsplit(as.character(taxo.df[i,]$user_genome), "[.]"))[1]
 }
-dim(taxo.df)  #1258    9
-
-taxo.df[is.na(taxo.df$GTDBK_species),]  #aucun
-
 df.all=merge(Garud.data1,taxo.df[,c('species_name','GTDBK_species','genus','family','order','class','phylum')],by='species_name')
 
 df.all$genus=as.factor(df.all$genus)
@@ -129,7 +123,6 @@ df.all$sample_id=as.factor(df.all$sample_id)
 
 ##abundances from midas
 midas_abund=read.table('/Users/naima/projet_HMP_gut_nandita_sept20/31janvier_MidasAbundance_files/relative_abundance.txt',sep='\t',header=T,check.names = F)
-dim(midas_abund)  #5952  470
 
 rownames(midas_abund)=midas_abund$species_id
 midas_abund=midas_abund[,-1]
@@ -140,7 +133,6 @@ dim(commun_data)
 
 ##convert to num
 commun_data_n=data.matrix(as.data.frame(commun_data))  ##sample*species
-dim(commun_data_n) #469 5952
 
 #remove species present in 0 sample
 commun_data_n.nonzero=commun_data_n[,-(which(colSums(commun_data_n)==0))]
