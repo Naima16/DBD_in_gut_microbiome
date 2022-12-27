@@ -1,4 +1,4 @@
-### R scripts (RStudio version 1.2.5042) used to run Statistics + visualisation in Madi et al. 2022.
+### R scripts (RStudio version 1.2.5042) used to run Statistics + visualization in Madi et al. 2022.
 ### Content :
 * Figures: Code to generate figures and supplementary figures.
 * GAMs : Code for the generalized additive mixed models with polymorphism rate in a focal species as a function of community diversity estimated with Shannon, species richness on the whole data and rarefied richness.
