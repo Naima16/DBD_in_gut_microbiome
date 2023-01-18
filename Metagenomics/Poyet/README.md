@@ -18,6 +18,6 @@ Overview of data:
 To set up for use:
 - Download a copy of the MIDAS database of reference genomes
 - Download PATRIC kegg/feature files for all genomes in the MIDAS database
-- Obtain MIDAS output for HMP1-2 dataset (should be a single directory containing merged genes, snps, species output)
+- Obtain MIDAS output for Poyet dataset (should be a single directory containing merged genes, snps, species output)
 - Run postprocessing scripts (postprocess/calculate_...) if necessary
 - Make a symbolic link to utils under postprocess
