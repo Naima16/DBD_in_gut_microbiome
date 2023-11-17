@@ -1,7 +1,7 @@
-## Community diversity is associated with intra-species genetic diversity and gene loss in the human gut microbiome (Madi et al. 2022)
+## Community diversity is associated with intra-species genetic diversity and gene loss in the human gut microbiome (Madi et al. 2023)
 
 Code for metagenomic pipeline (MIDAS) and post-Midas filters, statistics and figures in Madi et al. 2022. 
-https://doi.org/10.1101/2022.03.08.483496
+https://doi.org/10.7554/eLife.78530
 
 Two publicly available metagenomic datasets were examined in this study:
 1. Human Microbiome Project Consortium 2012 and Lloyd-Price et al. (2017)
